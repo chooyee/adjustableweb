@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo.png">
+	  <link rel="icon" type="image/png" sizes="96x96" href="assets/img/logo.png">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>AQRCode | Free QR Code Generation Rest API Service</title>
+    <meta name="description" content="AQRCode offers a free QR Code Rest API so you can dynamically generate and display QR Codes on your website, blog, emails, or online application. Create, save and print FREE QR Codes for personal and business use. Get your free QR Codes Rest API Service now!">
+    <META type="keywords" content="qr codes, qr code generator, qr code maker, qr codde creator, qr code reader, qr code scanner, qr code application, qr code app, quick response code, data matrix codes, 2D barcodes, smartphones, mobile tagging, iphone, nokia, android, sony ericsson, xperia, bluetooth, qrcode, mobile phone, cellular phone, cell phone, mobile site, mobile design, mobile web site, mobile advertising, mobile web marketing, seo, internet marketing, online marketing, mobile advertising, mobile marketing, iphone apps, smartphones, rogers, verizon, att, softbank, kddi au, ntt docomo, keitai denwa, apple iphone, handheld devices, qr code marketing, qr code generator, qr code maker, qr code creator, qr code reader app, qr code printing, qr code information, qrickit, qrikit, qricit, qrickets, crickets, crickit, qrickme, qrme, datamatrix, barcode, 2d barcode, upc, barcode scanner, printing, web design, flyers, posters, magazines, newspapers, business cards, invitation cards, t-shirts, printing, png qr code, cbc, news, url, text, sms, message, google maps, vcard, mecard, ical, vcal">
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="subtitle" content="Create your QR Code for free">
+
+    <meta property="og:title" content="AQRCode | Free QR Code Generation Rest API Service"/>
+    <meta property="og:description" content="AQRCode offers a free QR Code Rest API so you can dynamically generate and display QR Codes on your website, blog, emails, or online application. Create, save and print FREE QR Codes for personal and business use. Get your free QR Codes Rest API Service now!">
+    <meta property="og:type" content="website">
+
+    <link rel="canonical" href="<%=hostname%>" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="article:modified_time" content="2021-04-25" />
+
+    <!-- <link href="assets/css/bootstrap.css" rel="stylesheet" /> -->
+    <link async rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.2/dist/css/bootstrap.min.css" >
+    <link async href="assets/css/styles.min.css" rel="stylesheet"/>
+
+    <!--     Fonts and icons     -->
+    <link async href='https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600' rel='stylesheet' type='text/css'>
+    <link async href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link async href="assets/css/fonts/pe-icon-7-stroke.css" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RTLTBX7250"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RTLTBX7250');
+    </script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default navbar-transparent navbar-fixed-top" color-on-scroll="200">
+        <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"-->
+        <div class="container">
+            <div class="navbar-header">
+                <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar bar1"></span>
+                    <span class="icon-bar bar2"></span>
+                    <span class="icon-bar bar3"></span>
+                </button>
+                <a href="/" class="collapse navbar-brand navbar-collapse">
+                    AQRCode | Free QR Code Generation Rest API Service
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right navbar-uppercase">
+                    <li>
+                        <a href="#comingsoon" target="_blank">Get PRO Version</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#aqrcode" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-share-alt"></i> Share
+                        </a>
+                        <ul class="dropdown-menu dropdown-danger">
+                            <li>
+                                <a href="https://www.facebook.com/dialog/share?app_id=1057310958012035&display=popup&href=<%=hostname%>" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/intent/tweet?text=Get%20your%20free%20QR%20Code%20@%20<%=hostname%>" target="_blank"><i class="fa fa-twitter"></i> Twitter</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="mailto:chooyee@gmail.com" class="btn btn-danger btn-fill">Contact us</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </nav>
+
+
+    <div class="section section-header">
+        <div class="parallax filter filter-color-purple">
+            <div class="image"
+                style="background-image: url('assets/img/header-3.jpeg')">
+            </div>
+            <div class="container">
+                <div class="content">
+                    <div class="title-area">
+                        <p>AQRCode offers a free dyanmic QR Code Generation Rest API.</p>
+                        <h1 class="title-modern">AQRCode</h1>
+                        <h3>Probably the easiest QR code generator in the world!</h3>                       
+                        <div class="separator line-separator">♦</div>
+                    </div>
+
+                    <div class="title-area">
+                        <p class="description"><code style="text-transform:lowercase"><%=hostname%>/qr?data={your_url}</code></p>
+                        <img src="<%=hostname%>/qr?data=<%=hostname%>&width=50&height=50&foregroundcolor=11899c&backgroundimage=<%=hostname%>/assets/img/logo.png" alt="qrcode">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="documentation" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="title-area">
+                    <h2>Documentation</h2>
+                    <div class="separator separator-danger">✻</div>
+                    <p class="description"><code><%=hostname%>/qr?data={url}&width={numeric}&height=numeric&logo={url_of_logo}&backgroundimage={url_of_backgroundimage}&foregroundcolor={color_code}&backgroundcolor={color_code}</code></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="title-area">
+                    <div class="info-icon">
+                        <div class="icon text-danger">
+                            <i class="pe-7s-note2"></i>
+                        </div>
+                        <h3>Example</h3>
+                        <p class="description">
+                            <pre><%=hostname%>/qr?data=<%=hostname%>&width=256&height=256&logo=<%=hostname%>/assets/img/logo.png&foregroundcolor=a83cfa&backgroundcolor=f3f5e1</pre>    
+                            <p><img src="<%=hostname%>/qr?data=<%=hostname%>&width=256&height=256&logo=<%=hostname%>/assets/img/logo.png&foregroundcolor=a83cfa&backgroundcolor=f3f5e1" alt="qrcode"></p>
+                        </p>
+                    </div>
+                </div>
+            </div>     
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="info-icon">
+                        <div class="icon text-danger">
+                            <i class="pe-7s-magic-wand"></i>
+                        </div>
+                        <h3>High Performance</h3>
+                        <p class="description">Every qr code is cache and supported up to 1000 tps!</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-icon">
+                        <div class="icon text-danger">
+                            <i class="pe-7s-link"></i>
+                        </div>
+                        <h3>Url Shorterner</h3>
+                        <p class="description">Long url? Fret not, your url will be shortern via TinyUrl.com</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-icon">
+                        <div class="icon text-danger">
+                            <i class="pe-7s-cloud-download"></i>
+                        </div>
+                        <h3>Customize</h3>
+                        <p class="description">Need to create in batch or customize request? Please contact us.</p>
+                    </div>
+                </div>
+            </div>      
+        </div>
+    </div>
+
+    <div name="contactus" class="section section-small section-get-started">
+        <div class="parallax filter">
+            <div class="image"
+                style="background-image: url('assets/img/starry-min.png')">
+            </div>
+            <div class="container">
+                <div class="title-area">
+                    <h2 class="text-white">Do you want to connect with us?</h2>
+                    <div class="separator line-separator">♦</div>
+                    <p class="description"></p>
+                </div>
+
+                <div class="button-get-started">
+                    <a href="mailto:chooyee@gmail.com" class="btn btn-danger btn-fill btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer footer-big footer-color-black" data-color="black">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-3">
+                    <div class="info">
+                        <h5 class="title">Company</h5>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="#">Home</a></li>
+                               
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-3 col-md-offset-1 col-sm-3">
+                    <div class="info">
+                        <h5 class="title"> Help and Support</h5>
+                         <nav>
+                            <ul>
+                                <li>
+                                    <a href="mailto:chooyee@gmail.com">Contact Us</a>
+                                </li>
+                                <li>
+                                    <a href="#documentation">How it works</a>
+                                </li>
+                                <li>
+                                    <a href="#">Terms &amp; Conditions</a>
+                                </li>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    <div class="info">
+                        <h5 class="title">Latest News</h5>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-twitter"></i> <b>Get Shit Done</b> The best kit in the market is here, just give it a try and let us...
+                                        <hr class="hr-small">
+                                    </a>
+                                </li>
+                              
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-1 col-sm-3">
+                    <div class="info">
+                        <h5 class="title">Follow us on</h5>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="#" class="btn btn-social btn-facebook btn-simple">
+                                        <i class="fa fa-facebook-square"></i> Facebook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn btn-social btn-dribbble btn-simple">
+                                        <i class="fa fa-dribbble"></i> Dribbble
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn btn-social btn-twitter btn-simple">
+                                        <i class="fa fa-twitter"></i> Twitter
+                                    </a>
+                                </li>
+                              
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="copyright">
+                 © <script> document.write(new Date().getFullYear()) </script> aqrcode is offered by chooyee.co, made with love
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<!--   core js files    -->
+<script src="assets/js/jquery.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.js" type="text/javascript"></script>
+
+<!--  js library for devices recognition -->
+<script type="text/javascript" src="assets/js/modernizr.js"></script>
+
+<!--   file where we handle all the script from the Gaia - Bootstrap Template   -->
+<script type="text/javascript" src="assets/js/gaia.js"></script>
+
+
+</html>

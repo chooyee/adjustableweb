@@ -1,0 +1,136 @@
+<!-- <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script> -->
+<script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+<!-- Popperjs -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"
+crossorigin="anonymous"></script> -->
+<!-- Tempus Dominus JavaScript -->
+<script src="https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@master/dist/js/tempus-dominus.js"
+  crossorigin="anonymous"></script>
+<!-- Tempus Dominus Styles -->
+<link href="https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@master/dist/css/tempus-dominus.css" rel="stylesheet"
+  crossorigin="anonymous">
+
+<script>
+  var chkenv = document.getElementById('chkenv');
+  var lblenv = document.getElementById('lblenv');
+  chkenv.addEventListener('change', async function (e) {
+    if (chkenv.checked) lblenv.innerHTML = 'Production'
+    else lblenv.innerHTML = 'Sandbox'
+  })
+</script>
+<script>
+  const dateConfig = {
+    display: {
+      components: {
+        decades: true,
+        year: true,
+        month: true,
+        date: true,
+        hours: false,
+        minutes: false,
+        seconds: false,
+      }
+    }
+  };
+  const linkedPicker1Element = document.getElementById('linkedPickers1Input');
+  const linkedPicker2Element = document.getElementById('linkedPickers2Input');
+  const linked1 = new tempusDominus.TempusDominus(linkedPicker1Element, dateConfig);
+  const linked2 = new tempusDominus.TempusDominus(linkedPicker2Element, dateConfig);
+
+  //using event listeners
+  linkedPicker1Element.addEventListener(tempusDominus.Namespace.events.change, (e) => {
+    linked2.updateOptions({
+      restrictions: {
+        minDate: e.detail.date
+      }
+    });
+  });
+
+  //using subscribe method
+  const subscription = linked2.subscribe(tempusDominus.Namespace.events.change, (e) => {
+    linked1.updateOptions({
+      restrictions: {
+        maxDate: e.date
+      }
+    });
+  });
+
+</script>
+<script>
+  var btnSearch = document.getElementById('btnSearch');
+  btnSearch.addEventListener('click', async function (e) {
+    
+    if ((linked1.dates.picked.length > 0) && (linked2.dates.picked.length > 0)) {
+      let dateFrom = linked1.dates.picked[0]
+      let dateTo = linked2.dates.picked[0]
+      let month = dateFrom.month + 1
+      let dateFromStr = `${dateFrom.year}-${month}-${dateFrom.date}`
+      month = dateTo.month + 1
+      let dateToStr = `${dateTo.year}-${month}-${dateTo.date}`
+
+      let env = 1
+      if (!chkenv.checked) env = 0
+      let queryString = `?env=${env}&dateFrom=${dateFromStr}&dateTo=${dateToStr}`
+
+      //GetDropOffByEvents
+      let url = "/getTrackerConversion" + queryString;
+      let trackerConversion = await FetchGetData(url)
+      console.log(trackerConversion)
+      tablegen(trackerConversion)
+    } else {
+      alert('Date cannot be empty!')
+    }
+  });
+
+  tablegen=(trackerConversion)=>{
+    const table = document.getElementById('tabletrackerconversion');
+    clearTable(table)
+    if (trackerConversion.length>0)
+    {
+      const firstElement = trackerConversion[0]
+      genTableHeader(table, firstElement)
+      genTableBody(table, trackerConversion)
+    }
+  }
+
+  genTableHeader =(table, element)=>{
+    const thead = document.createElement('thead')   
+    const keys = Object.keys(element);
+    console.log(keys);
+
+    keys.forEach((key, index) => {     
+      let th = document.createElement('th')
+      th.innerHTML = key
+      thead.appendChild(th)
+    });  
+    table.appendChild(thead)
+  }
+
+  genTableBody =(table, trackerConversion)=>{
+    const tbody = document.createElement('tbody')   
+    trackerConversion.forEach(element => {
+      const tr = document.createElement('tr')   
+      for (const [key, value] of Object.entries(element)) {
+        const td = document.createElement('td')
+        const div = document.createElement('div')
+        div.classList.add('d-flex')
+        div.classList.add('px-2')
+        div.innerHTML = value
+        td.appendChild(div)
+        tr.appendChild(td)
+        console.log(`${key}: ${value}`);
+      }
+      tbody.appendChild(tr)
+    });
+    table.appendChild(tbody)
+  }
+
+  clearTable = (table)=>{   
+    while (table.firstChild) {
+      table.removeChild(table.firstChild);
+    }
+  }
+</script>
