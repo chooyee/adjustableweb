@@ -35,6 +35,36 @@ class TrackerHandler {
 
         return await FetchService.FetchData(endpoint, session.accessToken)        
     }
+
+    GetConversionByDevice = async(req, res) =>{
+        let endpoint = `${this.baseApiEndpoint}/GetConversionByDevice`
+        let queryParams = this.QueryParser(req)
+        endpoint +=queryParams;
+        console.log(req.session)
+        let session=req.session
+
+        return await FetchService.FetchData(endpoint, session.accessToken)        
+    }
+
+    GetConversionByCampaign = async(req, res) =>{
+        let endpoint = `${this.baseApiEndpoint}/GetConversionByCampaign`
+        let queryParams = this.QueryParser(req)
+        endpoint +=queryParams;
+        console.log(req.session)
+        let session=req.session
+
+        return await FetchService.FetchData(endpoint, session.accessToken)        
+    }
+
+    GetConversionByCity = async(req, res) =>{
+        let endpoint = `${this.baseApiEndpoint}/GetConversionByCity`
+        let queryParams = this.QueryParser(req)
+        endpoint +=queryParams;
+        console.log(req.session)
+        let session=req.session
+
+        return await FetchService.FetchData(endpoint, session.accessToken)        
+    }
 }
 
 module.exports = new TrackerHandler();

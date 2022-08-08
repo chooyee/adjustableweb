@@ -108,6 +108,33 @@ app.get("/getTrackerConversion", authMiddleware, async (req, res) => {
     else
         res.status(500).json(result.message)
 });
+
+app.get("/getConversionByDevice", authMiddleware, async (req, res) => {  
+    result = await trackerHandler.GetConversionByDevice(req,res) 
+    
+    if (result.status==Enum.Status.Success)
+        res.status(200).json(result.data)
+    else
+        res.status(500).json(result.message)
+});
+
+app.get("/getConversionByCampaign", authMiddleware, async (req, res) => {  
+    result = await trackerHandler.GetConversionByCampaign(req,res) 
+    
+    if (result.status==Enum.Status.Success)
+        res.status(200).json(result.data)
+    else
+        res.status(500).json(result.message)
+});
+
+app.get("/getConversionByCity", authMiddleware, async (req, res) => {  
+    result = await trackerHandler.GetConversionByCity(req,res) 
+    
+    if (result.status==Enum.Status.Success)
+        res.status(200).json(result.data)
+    else
+        res.status(500).json(result.message)
+});
 // set port, listen for requests
 const PORT = context.ExpressPort || 3000;
 app.listen(PORT, () => {

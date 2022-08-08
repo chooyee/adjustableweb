@@ -75,18 +75,37 @@ crossorigin="anonymous"></script> -->
       if (!chkenv.checked) env = 0
       let queryString = `?env=${env}&dateFrom=${dateFromStr}&dateTo=${dateToStr}`
 
-      //GetDropOffByEvents
+
       let url = "/getTrackerConversion" + queryString;
-      let trackerConversion = await FetchGetData(url)
-      console.log(trackerConversion)
-      tablegen(trackerConversion)
+      let conversionByTrackerDataSet = await FetchGetData(url)
+
+      url = "/getConversionByDevice" + queryString;
+      let conversionByDeviceDataSet = await FetchGetData(url)
+
+      url = "/getConversionByCampaign" + queryString;
+      let conversionByCampaignDataSet = await FetchGetData(url)
+
+      url = "/getConversionByCity" + queryString;
+      let conversionByCityDataSet = await FetchGetData(url)
+
+      const tableconversionbytracker = document.getElementById('tabletrackerconversion');
+      tablegen(tableconversionbytracker, conversionByTrackerDataSet.slice(0,20))
+
+      const tableConversionByDevice = document.getElementById('tableconversionbydevice');
+      tablegen(tableConversionByDevice, conversionByDeviceDataSet.slice(0,20))
+
+      const tableConversionByCampaign = document.getElementById('tableconversionbycampaign');
+      tablegen(tableConversionByCampaign, conversionByCampaignDataSet.slice(0,20))
+
+      const tableConversionByCity = document.getElementById('tableconversionbycity');
+      tablegen(tableConversionByCity, conversionByCityDataSet.slice(0,20))
     } else {
       alert('Date cannot be empty!')
     }
   });
 
-  tablegen=(trackerConversion)=>{
-    const table = document.getElementById('tabletrackerconversion');
+  tablegen=(table, trackerConversion)=>{
+   
     clearTable(table)
     if (trackerConversion.length>0)
     {
